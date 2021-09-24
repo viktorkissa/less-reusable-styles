@@ -1,0 +1,49 @@
+// compress: true, sourceMap: true
+
+@import "vars";
+@import "mixins";
+
+// Blocks
+@import "blocks/title";
+@import "blocks/btn";
+
+body {
+  color: @black;
+}
+
+.post {
+  background: url("@{img}bg.jpg") center no-repeat;
+}
+
+// Grid
+@columns: 12;
+@grid-width: 1200px;
+
+.make-grid(@columns, @i: 1) when (@i <= @columns) {
+  .col-@{i} {
+    width: percentage(@i / @columns);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    flex: 1;
+  }
+
+  .make-grid(@columns, @i + 1)
+}
+
+.container {
+  width: 100%;
+  max-width: @grid-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.make-grid(@columns);

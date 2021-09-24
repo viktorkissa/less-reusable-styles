@@ -1,0 +1,17 @@
+// main: styles.less
+
+@import "vars";
+
+.set-btn-bg(@bg) {
+  background-color: @bg;
+
+  & when(lightness(@bg) > 60) { // if bg to light color will be changed automatically to dark
+    color: @black;
+  }
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    background-color: darken(@bg, 15%);
+  }
+}

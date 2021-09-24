@@ -1,0 +1,44 @@
+// main: ../styles.less
+
+@import "../vars";
+@import "../mixins";
+
+.btn {
+  display: inline-block;
+  padding: .5em 1em;
+  border-radius: @radius;
+  color: white;
+  background-color: #cccccc;
+  transition: background-color .1s linear;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    background-color: #c4c4c4;
+  }
+
+  & + & { // .btn + .btn - not for last child
+    margin-left: 1rem;
+  }
+
+  .disabled & { // .disabled .btn - if parent has some class
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--primary {
+    .set-btn-bg(@primary);
+  }
+
+  &--secondary {
+    .set-btn-bg(@secondary);
+  }
+
+  &--success {
+    .set-btn-bg(@success);
+  }
+
+  span {
+    color: @black;
+  }
+}
